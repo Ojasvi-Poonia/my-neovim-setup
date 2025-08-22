@@ -7,6 +7,7 @@ Plug-and-play: clone, open Neovim, and start coding.
 
 ## 📁 Directory Layout
 
+```
 init.lua
 lua/
 └─ ojas/
@@ -43,6 +44,7 @@ lua/
 ├─ trouble.lua
 ├─ vim-maximizer.lua
 └─ which-key.lua
+```
 
 **Theme Which I used = Kanagawa .nvim **
 
@@ -60,6 +62,7 @@ git clone https://github.com/<your-user>/nvim-beginner-config.git ~/.config/nvim
 
 3 Open Neovim – plugins install automatically
 
-```nvim
+```
+nvim
 
 ```
