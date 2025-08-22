@@ -48,6 +48,9 @@ lua/
 
 **Theme Which I used = Kanagawa .nvim **
 
+[a link](https://github.com/rebelot/kanagawa.nvim)
+I modified it accordingly to my prefrences in **colorscheme.lua** file
+
 1 Back up any old config
 
 ```
