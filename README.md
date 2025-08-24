@@ -47,8 +47,10 @@ lua/
 ```
 
 **Theme Which I used = Kanagawa .nvim **
-
 https://github.com/rebelot/kanagawa.nvim
+
+I hated it almost throwed up on second day
+so now I am using rose-pine theme for neovim
 
 I modified it accordingly to my prefrences in **colorscheme.lua** file
 

@@ -1,54 +1,93 @@
 return {
-  {
-    "rebelot/kanagawa.nvim",
-    priority = 1000, -- Make sure it loads first
-    config = function()
-      -- Call the setup function with our configuration
-      require("kanagawa").setup({
-        compile = false, -- Recommended for faster startup
-        undercurl = true, -- Enable undercurls
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = true, -- Enable this for a transparent background
-        dimInactive = false, -- Do not dim inactive windows
-        terminalColors = true, -- Set terminal colors (make sure terminal supports this)
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		priority = 1000, -- Make sure it loads first
+		config = function()
+			-- Call the setup function with our configuration
+			require("rose-pine").setup({
+				variant = "auto", -- auto, main, moon, or dawn
+				dark_variant = "moon", -- moon is the darkest variant, perfect for dark theme preference
+				dim_inactive_windows = false, -- Do not dim inactive windows
+				extend_background_behind_borders = true,
 
-        -- Here we can override the default colors of the theme
-        colors = {
-          palette = {}, -- We are not changing the core palette colors
-          theme = {
-            -- The 'dragon' theme is the dark one.
-            -- You can also override colors for 'wave' (light) or 'all' themes.
-            dragon = {
-              ui = {
-                -- Make the background of floating windows slightly different
-                float = { bg = "#1F212E" },
-              },
-            },
-          },
-        },
+				enable = {
+					terminal = true, -- Set terminal colors (make sure terminal supports this)
+					legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+					migrations = true, -- Handle deprecated options automatically
+				},
 
-        -- Here we can override specific syntax groups
-        overrides = function(colors)
-          local theme = colors.theme
-          return {
-            -- Make the line you are on stand out a bit more
-            CursorLine = { bg = theme.ui.bg_p1 },
+				styles = {
+					bold = true,
+					italic = false,
+					transparency = true, -- Enable this for a transparent background
+				},
 
-            -- Make visual selections have a more distinct background
-            Visual = { bg = theme.ui.bg_p2, bold = true },
-            
-            -- Softer color for line numbers
-            LineNr = { fg = theme.ui.fg_dim },
-          }
-        end,
-      })
+				groups = {
+					border = "muted",
+					link = "iris",
+					panel = "surface",
 
-      -- Finally, apply the colorscheme
-      vim.cmd("colorscheme kanagawa-dragon")
-    end,
-  },
+					error = "love",
+					hint = "iris",
+					info = "foam",
+					note = "pine",
+					todo = "rose",
+					warn = "gold",
+
+					git_add = "foam",
+					git_change = "rose",
+					git_delete = "love",
+					git_dirty = "rose",
+					git_ignore = "muted",
+					git_merge = "iris",
+					git_rename = "pine",
+					git_stage = "iris",
+					git_text = "rose",
+					git_untracked = "subtle",
+
+					h1 = "iris",
+					h2 = "foam",
+					h3 = "rose",
+					h4 = "gold",
+					h5 = "pine",
+					h6 = "foam",
+				},
+
+				palette = {},
+
+				-- Custom highlights to match your original Kanagawa overrides
+				highlight_groups = {
+					-- Make the line you are on stand out a bit more
+					CursorLine = { bg = "surface" },
+
+					-- Make visual selections have a more distinct background
+					Visual = { bg = "highlight_med", blend = 20, inherit = false },
+
+					-- Softer color for line numbers
+					LineNr = { fg = "muted" },
+
+					-- Make comments italic (matching your original preference)
+					Comment = { fg = "subtle", italic = true },
+
+					-- Make keywords italic (matching your original preference)
+					Keyword = { fg = "pine", italic = false },
+
+					-- Make statements bold (matching your original preference)
+					Statement = { fg = "pine", bold = true },
+
+					-- Make floating windows slightly different
+					NormalFloat = { bg = "surface", blend = 80 },
+					FloatBorder = { fg = "muted", bg = "surface" },
+				},
+
+				before_highlight = function(group, highlight, palette)
+					-- You can add any additional customizations here if needed
+				end,
+			})
+
+			-- Finally, apply the colorscheme (moon variant for darkest theme)
+			vim.cmd("colorscheme rose-pine-moon")
+		end,
+	},
 }
